@@ -1,0 +1,13 @@
+extends main
+
+block content
+    main
+        h1 Login form
+        form(action='/auth/login' method='POST')
+            label Username
+                |!{' '}
+                input(type='text' name='username', placeholder='Username...' value=`${userData && userData.username || ''}`)
+            label Password
+                |!{' '}
+                input(type='text' name='password', placeholder='Password...')
+            input(type='Submit' value='Login')

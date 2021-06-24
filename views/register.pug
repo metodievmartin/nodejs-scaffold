@@ -1,0 +1,16 @@
+extends main
+
+block content
+    main
+        h1 Register form
+        form(action='/auth/register' method='POST')
+            label Username
+                | !{' '}
+                input(type='text' name='username', placeholder='Username...')
+            label Password
+                | !{' '}
+                input(type='text' name='password', placeholder='Password...')
+            label Repeat Password
+                | !{' '}
+                input(type='text' name='rePass', placeholder='Repeat password...')
+            input(type='Submit' value='Register')
