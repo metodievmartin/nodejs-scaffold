@@ -7,7 +7,10 @@ module.exports = () => {
 
         if (token) {
             try {
-                req.user = jwt.verify(token, TOKEN_SECRET);
+                const user = jwt.verify(token, TOKEN_SECRET);
+
+                req.user = user
+                res.locals.user = user;
 
             } catch (err) {
                 res.clearCookie(COOKIE_NAME);

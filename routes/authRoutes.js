@@ -3,6 +3,7 @@ const router = require('express').Router();
 const { isGuest } = require('../middlewares/authMiddleware');
 const { register, login, logout } = require("../controllers/authController");
 
+// Route => '/api/auth'...
 router.post('/register', isGuest(), register);
 router.post('/login', isGuest(), login);
 router.get('/logout', logout);

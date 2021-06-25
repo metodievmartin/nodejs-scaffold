@@ -3,5 +3,5 @@ const viewRoutes = require('../routes/viewRoutes');
 
 module.exports = (app) => {
   app.use('/', viewRoutes);
-  app.use('/auth', authRoutes);
+  app.use('/api/auth', authRoutes);
 };

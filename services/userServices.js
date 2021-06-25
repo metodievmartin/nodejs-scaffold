@@ -1,6 +1,6 @@
 const User = require('../models/User');
 
-const createUser = async (username, hashedPassword) => {
+exports.createUser = async (username, hashedPassword) => {
     // TODO - adapt properties to project requirements
 
     const user = new User({
@@ -13,14 +13,15 @@ const createUser = async (username, hashedPassword) => {
     return user;
 };
 
-const getUserByUsername = async (username) => {
+exports.getUserByUsername = async (username) => {
     const pattern = new RegExp(`^${username}$`, 'i');
-    const user = await User.findOne({ username: { $regex: pattern } });
-
-    return user;
+    return User.findOne({ username: { $regex: pattern } });
 };
 
-module.exports = {
-    createUser,
-    getUserByUsername
-}
+exports.getUserById = async (id) => {
+    return User.findById(id);
+};
+
+exports.addPlayToLikes = async (userId, playId) => {
+    return User.findByIdAndUpdate(userId, { $push: { likedPlays: playId } });
+};
